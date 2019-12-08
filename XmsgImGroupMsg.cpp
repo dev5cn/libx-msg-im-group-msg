@@ -20,6 +20,8 @@
 #include <libx-msg-im-group-pb.h>
 #include "XmsgImGroupMsg.h"
 #include "mgr/XmsgImMgrNeNetLoad.h"
+#include "mgr/XmsgImMgrNeXscServerQuery.h"
+#include "mgr/XmsgImMgrNeXscWorkerCount.h"
 #include "msg/XmsgImGroupCreate.h"
 #include "msg/XmsgImGroupInfoQuery.h"
 #include "msg/XmsgImGroupInfoUpdate.h"
@@ -66,6 +68,8 @@ void XmsgImGroupMsg::init(shared_ptr<XmsgImN2HMsgMgr> priMsgMgr)
 	X_MSG_H2N_PRPC_AFTER_AUTH(XmsgAp, XmsgImGroupUsrGroupQueryReq, XmsgImGroupUsrGroupQueryRsp, XmsgImGroupUsrGroupQuery::handle)
 	X_MSG_N2H_PRPC_BEFOR_AUTH(priMsgMgr, XmsgNeAuthReq, XmsgNeAuthRsp, XmsgNeAuth::handle)
 	X_MSG_N2H_PRPC_AFTER_AUTH(priMsgMgr, XmsgImMgrNeNetLoadReq, XmsgImMgrNeNetLoadRsp, XmsgImMgrNeNetLoad::handle)
+	X_MSG_N2H_PRPC_AFTER_AUTH(priMsgMgr, XmsgImMgrNeXscServerQueryReq, XmsgImMgrNeXscServerQueryRsp, XmsgImMgrNeXscServerQuery::handle)
+	X_MSG_N2H_PRPC_AFTER_AUTH(priMsgMgr, XmsgImMgrNeXscWorkerCountReq, XmsgImMgrNeXscWorkerCountRsp, XmsgImMgrNeXscWorkerCount::handle)
 	X_MSG_N2H_PRPC_AFTER_AUTH(priMsgMgr, XmsgImGroupChannelStatusSubReq, XmsgImGroupChannelStatusSubRsp, XmsgImGroupChannelStatusSub::handle)
 	X_MSG_N2H_PRPC_AFTER_AUTH(priMsgMgr, XmsgImGroupObjInfoQueryReq, XmsgImGroupObjInfoQueryRsp, XmsgImGroupObjInfoQuery::handle)
 	X_MSG_H2N_PRPC_AFTER_AUTH(XmsgImHlr, XmsgImHlrUsrInitReq, XmsgImHlrUsrInitRsp, XmsgImHlrUsrInit::handle)
