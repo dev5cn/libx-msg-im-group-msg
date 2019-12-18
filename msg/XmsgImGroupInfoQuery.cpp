@@ -58,7 +58,7 @@ void XmsgImGroupInfoQuery::queryOnGroupThread(SptrU u, SptrGroup group, SptrXitp
 {
 	if (group->isMember(u->cgt) == nullptr)
 	{
-		trans->endDesc(RET_FORBIDDEN, "you are not in group");
+		trans->endDesc(RET_FORBIDDEN, "can not found you in group");
 		return;
 	}
 	shared_ptr<XmsgImGroupInfoQueryRsp> rsp(new XmsgImGroupInfoQueryRsp());

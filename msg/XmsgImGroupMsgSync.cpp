@@ -59,7 +59,7 @@ void XmsgImGroupMsgSync::handle(shared_ptr<XmsgNeUsr> nu, SptrUl ul, SptrClientL
 	{
 		if (gl->isMember(ul->cgt) == nullptr) 
 		{
-			trans->endDesc(RET_FORBIDDEN, "you are not in group");
+			trans->endDesc(RET_FORBIDDEN, "can not found you in group");
 			return;
 		}
 		XmsgImGroupMsgSync::handle4groupLocal(ul, client, trans, req, gl, gm);

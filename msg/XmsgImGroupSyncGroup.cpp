@@ -37,9 +37,9 @@ void XmsgImGroupSyncGroup::handle(shared_ptr<XmsgNeUsr> nu, SptrUl ul, SptrClien
 		trans->endDesc(RET_FORMAT_ERROR, "channel global title format error: %s", req->cgt().c_str());
 		return;
 	}
-	if (gcgt->isGroup()) 
+	if (!gcgt->isGroup()) 
 	{
-		trans->endDesc(RET_FORMAT_ERROR, "channel global title format error: %s", req->cgt().c_str());
+		trans->endDesc(RET_FORMAT_ERROR, "channel global title must be a group: %s", req->cgt().c_str());
 		return;
 	}
 	shared_ptr<XmsgImGroupMemberColl> gm = ul->inGroupInfo(req->cgt());
@@ -63,7 +63,7 @@ void XmsgImGroupSyncGroup::handle(shared_ptr<XmsgNeUsr> nu, SptrUl ul, SptrClien
 		}
 		if (group->isMember(ul->cgt) == nullptr) 
 		{
-			trans->endDesc(RET_FORBIDDEN, "you are not in group");
+			trans->endDesc(RET_FORBIDDEN, "can not found you in group");
 			return;
 		}
 		if (req->ver() < 1)

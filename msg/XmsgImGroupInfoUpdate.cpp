@@ -69,7 +69,7 @@ void XmsgImGroupInfoUpdate::handle(shared_ptr<XmsgNeUsr> nu, SptrU u, SptrClient
 		auto gmi = group->isMember(u->cgt);
 		if (gmi == nullptr)
 		{
-			trans->endDesc(RET_FORBIDDEN, "you are not in group");
+			trans->endDesc(RET_FORBIDDEN, "can not found you in group");
 			return;
 		}
 		if(!gmi->havePermission2modifyGroupInfo()) 
