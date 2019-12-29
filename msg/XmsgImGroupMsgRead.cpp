@@ -39,9 +39,14 @@ void XmsgImGroupMsgRead::handle(shared_ptr<XmsgNeUsr> nu, SptrUl ul, SptrClientL
 		return;
 	}
 	SptrCgt gcgt = ChannelGlobalTitle::parse(req->cgt());
-	if (gcgt == nullptr || !gcgt->isGroup())
+	if (gcgt == nullptr)
 	{
-		trans->endDesc(RET_FORMAT_ERROR, "format error, cgt: %s", req->cgt().c_str());
+		trans->endDesc(RET_FORMAT_ERROR, "channel global title format error, cgt: %s", req->cgt().c_str());
+		return;
+	}
+	if (!gcgt->isGroup()) 
+	{
+		trans->endDesc(RET_FORMAT_ERROR, "channel global title format error: %s", req->cgt().c_str());
 		return;
 	}
 	SptrGroup group = XmsgImGroupMgr::instance()->findGroup(gcgt);

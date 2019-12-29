@@ -37,12 +37,11 @@ void XmsgImGroupMsgSync::handle(shared_ptr<XmsgNeUsr> nu, SptrUl ul, SptrClientL
 		trans->endDesc(RET_FORMAT_ERROR, "channel global title format error: %s", req->cgt().c_str());
 		return;
 	}
-	if (gcgt->isGroup()) 
+	if (!gcgt->isGroup()) 
 	{
 		trans->endDesc(RET_FORMAT_ERROR, "channel global title format error: %s", req->cgt().c_str());
 		return;
 	}
-
 	shared_ptr<XmsgImGroupMemberColl> gm = ul->inGroupInfo(req->cgt());
 	if (gm == nullptr) 
 	{
